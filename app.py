@@ -14,6 +14,7 @@ if st.button("Send Email"):
         msg['From'] = 'serval-app@languagetechnology.org'
         msg['To'] = email_receiver
         msg['Subject'] = subject
+        msg['Signed by'] = 'languagetechnology.org'
 
         context = ssl.create_default_context()
         server = smtplib.SMTP_SSL('mail.languagetechnology.org', 465, context=context, timeout=10)
