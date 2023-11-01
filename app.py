@@ -17,7 +17,7 @@ if st.button("Send Email"):
 
         context = ssl.create_default_context()
         server = smtplib.SMTP_SSL('mail.languagetechnology.org', 465, context=context)
-        server.set_debuglevel(1)
+        server.set_debuglevel(0)
         server.login("serval-app@languagetechnology.org",os.environ.get('SERVAL_APP_EMAIL_PASSWORD') )
         server.sendmail("serval-app@languagetechnology.org", email_receiver, msg.as_string())
         server.quit()
