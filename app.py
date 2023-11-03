@@ -18,7 +18,6 @@ if st.button("Send Email"):
         msg['Cc'] = email_cc
         msg['Bcc'] = email_bcc
         msg['Subject'] = subject
-        msg['Signed by'] = 'languagetechnology.org'
 
         context = ssl.create_default_context()
         server = smtplib.SMTP_SSL('mail.languagetechnology.org', 465, context=context, timeout=10)
