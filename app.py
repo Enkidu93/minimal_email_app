@@ -20,10 +20,12 @@ if st.button("Send Email"):
         msg['Subject'] = subject
 
         context = ssl.create_default_context()
-        server = smtplib.SMTP_SSL('mail.languagetechnology.org', 465, context=context, timeout=10)
+        server = smtplib.SMTP('mail.languagetechnology.org', 587)#, context=context)
         server.set_debuglevel(1)
+        server.starttls(context=context)
         server.login("serval-app@languagetechnology.org",os.environ.get('SERVAL_APP_EMAIL_PASSWORD') )
-        server.sendmail("serval-app@languagetechnology.org", email_receiver, msg.as_string())
+        errs = server.sendmail("serval-app@languagetechnology.org", email_receiver, msg.as_string())
+        print(errs)
         server.quit()
         st.success('Email sent successfully! 🚀')
     except Exception as e:
