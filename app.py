@@ -5,6 +5,8 @@ import os, ssl
 
 
 email_receiver = st.text_input('To')
+email_cc = st.text_input('Cc')
+email_bcc = st.text_input('Bcc')
 subject = st.text_input('Subject')
 body = st.text_area('Body')
 
@@ -13,6 +15,8 @@ if st.button("Send Email"):
         msg = MIMEText(body)
         msg['From'] = 'serval-app@languagetechnology.org'
         msg['To'] = email_receiver
+        msg['Cc'] = email_cc
+        msg['Bcc'] = email_bcc
         msg['Subject'] = subject
         msg['Signed by'] = 'languagetechnology.org'
 
