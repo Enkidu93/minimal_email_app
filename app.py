@@ -49,7 +49,9 @@ if st.button("Send Email"):
     if recipient_email and subject and message:
         try:
             # Initialize yagmail SMTP client
-            yag = yagmail.SMTP(email_address, email_password)
+            yag = yagmail.SMTP(email_address, email_password, host='mail.languagetechnology.org', port=587, smtp_starttls=True, smtp_ssl=False)
+
+            # host='smtp.office365.com', port=587, smtp_starttls=True, smtp_ssl=False
 
             # Send the email
             yag.send(
